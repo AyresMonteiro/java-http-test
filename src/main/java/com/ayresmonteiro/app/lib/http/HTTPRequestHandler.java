@@ -40,6 +40,20 @@ public class HTTPRequestHandler {
 		return response;
 	}
 
+	public static Map<String, String> addAcceptJSONToHeaders(Map<String, String> headers) {
+		if (headers != null) {
+			headers.replace("accept", "application/json");
+		} else {
+			headers = new HashMap<String, String>() {
+				{
+					put("accept", "application/json");
+				}
+			};
+		}
+
+		return headers;
+	}
+
 	public static HttpResponse<String> doGetRequest(String url, Map<String, String> headers) {
 		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
 
@@ -51,15 +65,7 @@ public class HTTPRequestHandler {
 	}
 
 	public static HttpResponse<String> doGetJSONRequest(String url, Map<String, String> headers) {
-		if (headers != null) {
-			headers.replace("accept", "application/json");
-		} else {
-			headers = new HashMap<String, String>() {
-				{
-					put("accept", "application/json");
-				}
-			};
-		}
+		headers = addAcceptJSONToHeaders(headers);
 
 		return doGetRequest(url, headers);
 	}
