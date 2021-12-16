@@ -55,4 +55,20 @@ public class HTTPRequestHandlerUnitTests {
 
         assertEquals(selectedURI, request.uri().toString());
     }
+
+    @Test
+    public void assertIfHeaderWasBuildedCorrectly() {
+
+        Map<String, String> headers = new HashMap<String, String>() {
+            {
+                put("content-type", "application/json");
+                put("accept", "application/xml");
+            }
+        };
+
+        HttpRequest request = HTTPRequestHandler.createBaseRequestBuilder("http://localhost", headers).build();
+
+        assertEquals(headers.get("accept"), request.headers().map().get("accept").get(0));
+        assertEquals(headers.get("content-type"), request.headers().map().get("content-type").get(0));
+    }
 }
