@@ -26,13 +26,7 @@ public class HTTPRequestHandler {
 		return requestBuilder;
 	}
 
-	public static HttpResponse<String> doGetRequest(String url, Map<String, String> headers) {
-		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
-
-		requestBuilder = requestBuilder.GET();
-
-		HttpRequest request = requestBuilder.build();
-
+	public static HttpResponse<String> sendRequest(HttpRequest request) {
 		HttpClient client = getHttpClient();
 
 		HttpResponse<String> response;
@@ -44,6 +38,16 @@ public class HTTPRequestHandler {
 		}
 
 		return response;
+	}
+
+	public static HttpResponse<String> doGetRequest(String url, Map<String, String> headers) {
+		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
+
+		requestBuilder = requestBuilder.GET();
+
+		HttpRequest request = requestBuilder.build();
+
+		return sendRequest(request);
 	}
 
 	public static HttpResponse<String> doGetJSONRequest(String url, Map<String, String> headers) {
