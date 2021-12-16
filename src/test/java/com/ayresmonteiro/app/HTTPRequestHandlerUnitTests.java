@@ -15,14 +15,14 @@ import com.ayresmonteiro.app.lib.http.HTTPRequestHandler;
  */
 public class HTTPRequestHandlerUnitTests {
     @Test
-    public void assertThatAcceptJSONHeaderIsSet() {
+    public void assertIfAcceptJSONHeaderIsSet() {
         Map<String, String> headers = HTTPRequestHandler.addAcceptJSONToHeaders(null);
 
         assertNotEquals(null, headers);
     }
 
     @Test
-    public void assertThatAcceptJSONHeaderWasOverwrited() {
+    public void assertIfAcceptJSONHeaderWasOverwrited() {
         Map<String, String> headers = new HashMap<String, String>() {
             {
                 put("accept", "application/xml");
