@@ -1,4 +1,4 @@
-package com.ayresmonteiro.app;
+package com.ayresmonteiro.app.integration;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
