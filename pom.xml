@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.ayresmonteiro.app</groupId>
-  <artifactId>java-volley-test</artifactId>
+  <artifactId>java-http-test</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>java-volley-test</name>
+  <name>java-http-test</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
