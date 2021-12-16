@@ -1,6 +1,5 @@
 package com.ayresmonteiro.app.lib.http;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -12,9 +11,8 @@ import java.util.Map.Entry;
 
 public class HTTPRequestHandler {
 	private static HttpClient httpClient = null;
-	private static Map<Integer, HttpRequest> pendentRequests;
 
-	public static HttpResponse<String> doRequest(String url, Map<String, String> headers) {
+	public static HttpRequest.Builder createBaseRequestBuilder(String url, Map<String, String> headers) {
 		URI uri = URI.create(url);
 
 		HttpRequest.Builder requestBuilder = HttpRequest.newBuilder(uri);
@@ -24,6 +22,12 @@ public class HTTPRequestHandler {
 				requestBuilder = requestBuilder.header(header.getKey(), header.getValue());
 			}
 		}
+
+		return requestBuilder;
+	}
+
+	public static HttpResponse<String> doGetRequest(String url, Map<String, String> headers) {
+		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
 
 		requestBuilder = requestBuilder.GET();
 
@@ -42,7 +46,7 @@ public class HTTPRequestHandler {
 		return response;
 	}
 
-	public static HttpResponse<String> doJSONRequest(String url, Map<String, String> headers) {
+	public static HttpResponse<String> doGetJSONRequest(String url, Map<String, String> headers) {
 		if (headers != null) {
 			headers.replace("accept", "application/json");
 		} else {
@@ -53,7 +57,7 @@ public class HTTPRequestHandler {
 			};
 		}
 
-		return doRequest(url, headers);
+		return doGetRequest(url, headers);
 	}
 
 	public static HttpClient getHttpClient() {

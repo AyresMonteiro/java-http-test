@@ -11,7 +11,7 @@ import com.ayresmonteiro.app.lib.http.HTTPRequestHandler;
 public class App {
     public static void main(String[] args) {
         HttpResponse<String> response = HTTPRequestHandler
-                .doJSONRequest("https://pokeapi.co/api/v2/pokemon/charizard/", null);
+                .doGetJSONRequest("https://pokeapi.co/api/v2/pokemon/charizard/", null);
 
         if (response != null) {
             System.out.println(response.body());
