@@ -12,7 +12,7 @@ import com.ayresmonteiro.app.lib.http.HTTPRequestHandler;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
+public class HTTPRequestHandlerIntegrationTests {
     @Test
     public void assertResponseIsNotNull() {
         HttpResponse<String> response = HTTPRequestHandler
