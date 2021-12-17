@@ -18,14 +18,14 @@ import com.ayresmonteiro.app.lib.http.HTTPRequestHandler;
  */
 public class HTTPRequestHandlerUnitTests {
     @Test
-    public void assertIfHeadersObjectAreSet() {
+    public void assertIfHeadersObjectAreSetAfterSetAccept() {
         Map<String, String> headers = HTTPRequestHandler.addAcceptJSONToHeaders(null);
 
         assertNotEquals(null, headers);
     }
 
     @Test
-    public void assertIfAcceptJSONHeaderIsSet() {
+    public void assertIfAcceptJSONHeaderIsSetAfterSetAccept() {
         Map<String, String> headers = new HashMap<String, String>() {
             {
             }
@@ -37,7 +37,7 @@ public class HTTPRequestHandlerUnitTests {
     }
 
     @Test
-    public void assertIfAcceptJSONHeaderWasOverwrited() {
+    public void assertIfAcceptJSONHeaderWasOverwritedAfterSetAccept() {
         Map<String, String> headers = new HashMap<String, String>() {
             {
                 put("accept", "application/xml");
