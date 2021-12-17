@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,6 +83,16 @@ public class HTTPRequestHandler {
 		headers = addAcceptJSONToHeaders(headers);
 
 		return doGetRequest(url, headers);
+	}
+
+	public static HttpResponse<String> doPostRequest(String url, Map<String, String> headers, String body) {
+		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
+
+		requestBuilder = requestBuilder.POST(BodyPublishers.ofString(body));
+
+		HttpRequest request = requestBuilder.build();
+
+		return sendRequest(request);
 	}
 
 	public static HttpClient getHttpClient() {
