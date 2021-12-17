@@ -69,6 +69,19 @@ public class HTTPRequestHandlerUnitTests {
     }
 
     @Test
+    public void assertIfContentTypeXMLHeaderWasOverwritedAfterSetContentType() {
+        Map<String, String> headers = new HashMap<String, String>() {
+            {
+                put("Content-Type", "application/xml");
+            }
+        };
+
+        headers = HTTPRequestHandler.addContentTypeJSONToHeaders(null);
+
+        assertEquals("application/json", headers.get("Content-Type"));
+    }
+
+    @Test
     public void assertIfURIWasBuildedCorrectly() {
         String[] availableURIs = {
                 "https://google.com",
