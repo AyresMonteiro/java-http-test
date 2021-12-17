@@ -37,7 +37,7 @@ public class HTTPRequestHandlerUnitTests {
     }
 
     @Test
-    public void assertIfAcceptJSONHeaderWasOverwritedAfterSetAccept() {
+    public void assertIfAcceptXMLHeaderWasOverwritedAfterSetAccept() {
         Map<String, String> headers = new HashMap<String, String>() {
             {
                 put("accept", "application/xml");
