@@ -95,6 +95,13 @@ public class HTTPRequestHandler {
 		return sendRequest(request);
 	}
 
+	public static HttpResponse<String> doPostJSONRequest(String url, Map<String, String> headers, String body) {
+		headers = addAcceptJSONToHeaders(headers);
+		headers = addContentTypeJSONToHeaders(headers);
+
+		return doPostRequest(url, headers, body);
+	}
+
 	public static HttpClient getHttpClient() {
 		if (httpClient == null) {
 			httpClient = HttpClient.newHttpClient();
