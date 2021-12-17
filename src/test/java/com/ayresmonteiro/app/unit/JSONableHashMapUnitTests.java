@@ -18,4 +18,19 @@ public class JSONableHashMapUnitTests {
 
 		assertEquals("{\"idade\":\"16\",\"nome\":\"Will\"}", map.toJson());
 	}
+
+	@Test
+	public void assertIfRecursiveHashMapsAreCorrectlyParsed() {
+		JSONableHashMap<String, JSONableHashMap<String, String>> map = new JSONableHashMap<String, JSONableHashMap<String, String>>() {
+			{
+				put("estabelecimento", new JSONableHashMap<String, String>() {
+					{
+						put("nome", "Estabelecimento Teste");
+					}
+				});
+			}
+		};
+
+		assertEquals("{\"estabelecimento\":{\"nome\":\"Estabelecimento Teste\"}}", map.toJson());
+	}
 }
