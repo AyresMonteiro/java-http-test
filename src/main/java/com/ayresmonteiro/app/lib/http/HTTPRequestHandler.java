@@ -54,6 +54,20 @@ public class HTTPRequestHandler {
 		return headers;
 	}
 
+	public static Map<String, String> addContentTypeJSONToHeaders(Map<String, String> headers) {
+		if (headers != null) {
+			headers.replace("Content-Type", "application/json");
+		} else {
+			headers = new HashMap<String, String>() {
+				{
+					put("Content-Type", "application/json");
+				}
+			};
+		}
+
+		return headers;
+	}
+
 	public static HttpResponse<String> doGetRequest(String url, Map<String, String> headers) {
 		HttpRequest.Builder requestBuilder = createBaseRequestBuilder(url, headers);
 
