@@ -18,6 +18,13 @@ import com.ayresmonteiro.app.lib.http.HTTPRequestHandler;
  */
 public class HTTPRequestHandlerUnitTests {
     @Test
+    public void assertIfHeadersObjectAreSet() {
+        Map<String, String> headers = HTTPRequestHandler.addAcceptJSONToHeaders(null);
+
+        assertNotEquals(null, headers);
+    }
+
+    @Test
     public void assertIfAcceptJSONHeaderIsSet() {
         Map<String, String> headers = new HashMap<String, String>() {
             {
