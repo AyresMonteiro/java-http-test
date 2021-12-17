@@ -50,6 +50,13 @@ public class HTTPRequestHandlerUnitTests {
     }
 
     @Test
+    public void assertIfHeadersObjectAreSetAfterSetContentType() {
+        Map<String, String> headers = HTTPRequestHandler.addContentTypeJSONToHeaders(null);
+
+        assertNotEquals(null, headers);
+    }
+
+    @Test
     public void assertIfURIWasBuildedCorrectly() {
         String[] availableURIs = {
                 "https://google.com",
